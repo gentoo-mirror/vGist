@@ -1,0 +1,2 @@
+move net-proxy/libQtShadowsocks dev-qt/libQtShadowsocks
+move dev-qt/libQtShadowsocks net-proxy/libQtShadowsocks
