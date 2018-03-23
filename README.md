@@ -1,5 +1,5 @@
-The gentoo overlay for tGist
+The gentoo overlay for vGist
 
 #### Way:
 
-    layman -o https://raw.githubusercontent.com/tgist/overlay/master/repositories.xml -f -a tGist
+    layman -o https://raw.githubusercontent.com/vgist/overlay/master/repositories.xml -f -a vGist
