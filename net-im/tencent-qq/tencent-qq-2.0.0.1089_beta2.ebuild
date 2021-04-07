@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,15 +6,18 @@ MULTILIB_COMPAT=( abi_x86_64 abi_mips_n64 )
 
 inherit desktop multilib-build rpm xdg-utils
 
+MY_PV=$(ver_cut 5-6)
+MY_P=$(ver_cut 1-3)-${MY_PV/beta/b}-$(ver_cut 4)
+
 DESCRIPTION="Official Linux version of Tencent QQ"
 HOMEPAGE="https://im.qq.com/linuxqq/download.html"
 LICENSE="Tencent"
 RESTRICT="bindist mirror"
 
 SRC_URI="
-	amd64? ( http://down.qq.com/qqweb/LinuxQQ_1/linuxqq_2.0.0-b2-1082_x86_64.rpm )
-	arm64? ( http://down.qq.com/qqweb/LinuxQQ_1/linuxqq_2.0.0-ci-1077_aarch64.rpm )
-	mips? ( http://down.qq.com/qqweb/LinuxQQ_1/linuxqq_2.0.0-b2-1082_mips64el.rpm )
+	amd64? ( http://down.qq.com/qqweb/LinuxQQ/linuxqq_${MY_P}_x86_64.rpm )
+	arm64? ( http://down.qq.com/qqweb/LinuxQQ/linuxqq_${MY_P}_aarch64.rpm )
+	mips? ( http://down.qq.com/qqweb/LinuxQQ/linuxqq_${MY_P}_mips64el.rpm )
 "
 
 SLOT="0"
