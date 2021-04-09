@@ -1,5 +1,5 @@
-The gentoo overlay for vGist
+personal overlay
 
-#### Way:
+    layman -f -a vGist
 
-    layman -o https://raw.githubusercontent.com/vgist/vgist-overlay/master/repositories.xml -f -a vGist
+enjoy
