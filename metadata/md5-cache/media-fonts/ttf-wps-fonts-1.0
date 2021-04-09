@@ -1,0 +1,14 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings ) >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install postinst postrm setup unpack
+DESCRIPTION=Symbol fonts required by wps-office
+EAPI=7
+HOMEPAGE=https://github.com/iamdh4/ttf-wps-fonts
+INHERIT=font unpacker git-r3
+IUSE=X
+KEYWORDS=amd64 arm ppc ppc64 x86 ~x86-fbsd
+LICENSE=as-is
+PROPERTIES=live
+RESTRICT=binchecks strip test
+SLOT=0
+_eclasses_=font	0667878c2b594871023dd1833d05996f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	unpacker	517f16af48ee3ab88180dd58b5143213	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_md5_=99f54dc1a10260940642d9b7deb14016
