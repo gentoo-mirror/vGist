@@ -10,12 +10,8 @@ HOMEPAGE="http://ccal.chinesebay.com/ccal/ccal.htm"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 arm64 mips"
-IUSE="big-endian pdf"
-REQUIRED_USE="
-	arm64? ( !big-endian )
-	mips? ( !big-endian )
-"
+KEYWORDS="amd64 arm arm64 mips x86"
+IUSE="pdf"
 SRC_URI="http://ccal.chinesebay.com/${PN}/${P}.tar.gz"
 RESTRICT="mirror"
 
