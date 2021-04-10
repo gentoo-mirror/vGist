@@ -24,8 +24,7 @@ RDEPEND="
 	sys-process/lsof
 	dev-libs/glib:2
 	media-libs/fontconfig
-	media-libs/freetype:2
-	media-libs/mesa
+	media-libs/mesa[X]
 	pulseaudio? ( media-sound/pulseaudio )
 	!pulseaudio? ( media-sound/apulse )
 	net-misc/curl
@@ -33,12 +32,11 @@ RDEPEND="
 	sys-apps/dbus
 	sys-apps/util-linux
 	sys-libs/zlib
-	x11-libs/gtk+:3
-	x11-libs/libICE
+	x11-libs/gtk+:3[introspection,X]
 	x11-libs/libSM
-	x11-libs/libX11
-	x11-libs/libxcb
+	x11-libs/libXext
 	x11-libs/libXi
+	x11-libs/libxkbcommon
 	x11-libs/libXrender
 	x11-libs/libXScrnSaver
 	x11-libs/pango"
