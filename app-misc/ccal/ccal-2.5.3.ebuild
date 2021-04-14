@@ -15,9 +15,10 @@ IUSE="pdf"
 SRC_URI="http://ccal.chinesebay.com/${PN}/${P}.tar.gz"
 RESTRICT="mirror"
 
-DEPEND="sys-libs/glibc"
-RDEPEND="${DEPEND}
+RDEPEND="
 	pdf? ( app-text/ghostscript-gpl )"
+DEPEND="${RDEPEND}
+	sys-libs/glibc"
 
 src_install() {
 	use pdf && ( dobin ccalpdf; doman ccalpdf.1 )
