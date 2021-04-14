@@ -2,3 +2,4 @@ app-admin/enpass 6.6.1.809-r1: A cross-platform, complete password management so
 app-misc/ccal 2.5.3: A simple command line calendar for Chinese lunar
 media-fonts/ttf-wps-fonts 1.0: Symbol fonts required by wps-office
 net-im/tencent-qq 2.0.0.1089_beta2: Official Linux version of Tencent QQ
+net-proxy/clash 1.5.0: A rule-based tunnel in Go.
