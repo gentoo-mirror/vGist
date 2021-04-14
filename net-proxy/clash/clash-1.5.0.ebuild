@@ -83,7 +83,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 src_compile() {
-	local Version=${PV} BuildTime=$(date)
+	local Version=${PV} BuildTime=$(date -u)
 	go build -o bin/clash -trimpath -ldflags "\
 	-X \"github.com/Dreamacro/clash/constant.Version=v${Version}\" \
 	-X \"github.com/Dreamacro/clash/constant.BuildTime=${BuildTime}\" \
