@@ -5,7 +5,10 @@ EAPI=7
 inherit go-module systemd
 
 DESCRIPTION="A rule-based tunnel in Go."
-HOMEPAGE="https://github.com/Dreamacro/clash"
+HOMEPAGE="https://github.com/Dreamacro/clash
+	https://www.maxmind.com"
+
+GEOIP_PV="20210412"
 
 EGO_SUM=(
 	"github.com/Dreamacro/go-shadowsocks2 v0.1.7"
@@ -70,11 +73,11 @@ EGO_SUM=(
 go-module_set_globals
 
 SRC_URI="https://github.com/Dreamacro/clash/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/Dreamacro/maxmind-geoip/releases/latest/download/Country.mmdb
+	https://github.com/Dreamacro/maxmind-geoip/releases/download/${GEOIP_PV}/Country.mmdb -> ${P}-Country-${GEOIP_PV}.mmdb
 	${EGO_SUM_SRC_URI}"
 RESTRICT="mirror"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3 CC-BY-SA-4.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
@@ -91,13 +94,14 @@ src_install() {
 	dobin bin/clash
 
 	insinto /etc/clash
-	doins "${DISTDIR}"/Country.mmdb
+	newins "${DISTDIR}/${P}-Country-${GEOIP_PV}.mmdb" Country.mmdb
 
-	systemd_dounit ${FILESDIR}/clash.service
+	systemd_dounit "${FILESDIR}/clash.service"
+	systemd_newunit "${FILESDIR}/clash_at.service" clash@.service
 }
 
 pkg_postinst() {
 	elog
 	elog "Follow the instructions of https://github.com/Dreamacro/clash/wiki"
-	elog "to creat /etc/clash/config.yaml"
+	elog
 }
