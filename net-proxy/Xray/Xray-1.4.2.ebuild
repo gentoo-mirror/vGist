@@ -365,15 +365,14 @@ src_compile() {
 src_install() {
 	dobin bin/xray
 
-	insinto /etc/xray
-	newins "${FILESDIR}/keep" .keep
-
 	insinto /usr/share/xray
 	newins "${DISTDIR}/${P}-geoip-${GEOIP_PV}.dat" geoip.dat
 	newins "${DISTDIR}/${P}-geosite-${GEOSITE_PV}.dat" geosite.dat
 
 	systemd_dounit "${FILESDIR}/xray.service"
 	systemd_newunit "${FILESDIR}/xray_at.service" "xray@.service"
+
+	keepdir /etc/xray
 }
 
 pkg_postinst() {
