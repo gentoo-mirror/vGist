@@ -63,7 +63,6 @@ src_configure() {
 		-DBUILD_TEST=$(usex test ON OFF)
 		-DENABLE_LOGGING=$(usex glog)
 		-DBUILD_STATIC=$(usex static-libs)
-		-DCMAKE_DISABLE_FIND_PACKAGE_Gflags=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_Iconv=ON
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
 	)
