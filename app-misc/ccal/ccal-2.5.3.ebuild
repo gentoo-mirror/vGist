@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 DESCRIPTION="A simple command line calendar for Chinese lunar"
 HOMEPAGE="http://ccal.chinesebay.com/ccal/ccal.htm"
@@ -17,8 +17,12 @@ RESTRICT="mirror"
 
 RDEPEND="
 	pdf? ( app-text/ghostscript-gpl )"
-DEPEND="${RDEPEND}
-	sys-libs/glibc"
+
+src_prepare() {
+	default
+	sed -i \
+		"s/^CXX=.*$/CXX=(tc-getCXX)/g" Makefile || die
+}
 
 src_install() {
 	use pdf && ( dobin ccalpdf; doman ccalpdf.1 )
