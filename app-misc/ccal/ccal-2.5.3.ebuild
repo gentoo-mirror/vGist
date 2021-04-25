@@ -21,7 +21,7 @@ RDEPEND="
 src_prepare() {
 	default
 	sed -i \
-		"s/^CXX=.*$/CC\$CXX=(tc-getCXX)/g" Makefile || die
+		"s/^CXX=.*$/CXX=(tc-getCXX)/g" Makefile || die
 }
 
 src_install() {
