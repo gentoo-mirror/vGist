@@ -23,7 +23,7 @@ fi
 LICENSE="BSD"
 SLOT="0/1"
 KEYWORDS="amd64 arm64 ppc ppc64 x86"
-IUSE="debug glog icu static-libs test"
+IUSE="debug glog static-libs test"
 RESTRICT="!test? ( test )"
 
 BDEPEND=""
@@ -35,7 +35,6 @@ RDEPEND="app-i18n/opencc:0=
 	dev-libs/marisa:0="
 DEPEND="${RDEPEND}
 	dev-libs/darts
-	icu? ( dev-libs/icu )
 	dev-libs/utfcpp
 	x11-base/xorg-proto
 	test? ( dev-cpp/gtest )"
@@ -63,7 +62,6 @@ src_configure() {
 		-DBOOST_USE_CXX11=ON
 		-DBUILD_TEST=$(usex test ON OFF)
 		-DENABLE_LOGGING=$(usex glog)
-		-DBUILD_WITH_ICU=$(usex icu)
 		-DBUILD_STATIC=$(usex static-libs)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Gflags=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_Iconv=ON
