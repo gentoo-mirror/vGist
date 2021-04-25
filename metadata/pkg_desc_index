@@ -1,4 +1,5 @@
 app-admin/enpass 6.6.1.809-r1: A cross-platform, complete password management solution.
+app-i18n/librime 1.5.3-r1 1.7.3: RIME (Rime Input Method Engine) core library
 app-misc/ccal 2.5.3: A simple command line calendar for Chinese lunar
 dev-cpp/glog 0.4.0: Google's C++ logging library
 net-im/tencent-qq 2.0.0.1089_beta2: Official Linux version of Tencent QQ
