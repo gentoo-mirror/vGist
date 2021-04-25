@@ -20,8 +20,7 @@ RDEPEND="
 
 src_prepare() {
 	default
-	sed -i \
-		"s/^CXX=.*$/CXX=$(tc-getCXX)/" Makefile || die
+	sed -i "s/^CXX=.*$/CXX=$(tc-getCXX)/" Makefile || die
 }
 
 src_install() {
