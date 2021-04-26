@@ -54,6 +54,8 @@ src_configure() {
 	local -x CXXFLAGS="${CXXFLAGS} -I${ESYSROOT}/usr/include/utf8cpp"
 
 	use debug && CXXFLAGS+=" -DDCHECK_ALWAYS_ON" || CXXFLAGS+=" -DNDEBUG"
+	use debug && $(test-flags-CXX -DDCHECK_ALWAYS_ON) \
+		|| $(test-flags-CXX -DNDEBUG)
 
 	local mycmakeargs=(
 		-DBOOST_USE_CXX11=ON
