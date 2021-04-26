@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit cmake-utils flag-o-matic
+inherit cmake-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -54,7 +54,6 @@ src_prepare() {
 }
 
 src_configure() {
-	#local -x CXXFLAGS="${CXXFLAGS} -I${ESYSROOT}/usr/include/utf8cpp"
 	append-cxxflags $(test-flags-CXX -I${ESYSROOT}/usr/include/utf8cpp)
 
 	use debug && append-cxxxflags $(test-flags-CXX -DDCHECK_ALWAYS_ON) \
