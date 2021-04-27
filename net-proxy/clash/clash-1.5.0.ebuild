@@ -82,7 +82,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
-BDEPEND=">=dev-lang/go-1.16.2"
+BDEPEND=">=dev-lang/go-1.16.2:="
 
 src_compile() {
 	local Version=${PV} BuildTime=$(date -u)
