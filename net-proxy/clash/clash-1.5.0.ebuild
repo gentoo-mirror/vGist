@@ -79,7 +79,7 @@ RESTRICT="mirror"
 
 LICENSE="GPL-3 CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 BDEPEND=">=dev-lang/go-1.16.2"
