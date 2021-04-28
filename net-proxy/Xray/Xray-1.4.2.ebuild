@@ -364,7 +364,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin /bin/xray
+	dobin bin/xray
 
 	insinto /usr/share/xray
 	newins "${DISTDIR}/${P}-geoip-${GEOIP_PV}.dat" geoip.dat
