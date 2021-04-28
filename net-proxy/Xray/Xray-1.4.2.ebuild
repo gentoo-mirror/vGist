@@ -355,7 +355,8 @@ KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 BDEPEND=">=dev-lang/go-1.16.2:="
-RDEPEND="app-misc/ca-certificates"
+RDEPEND="app-misc/ca-certificates
+	>=sys-apps/systemd-235:="
 
 S="${WORKDIR}/${PN}-core-${PV}"
 

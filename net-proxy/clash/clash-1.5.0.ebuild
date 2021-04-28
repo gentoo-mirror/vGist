@@ -83,6 +83,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 BDEPEND=">=dev-lang/go-1.16.2:="
+RDEPEND=">=sys-apps/systemd-235:="
 
 src_compile() {
 	local Version=${PV} BuildTime=$(date -u)
