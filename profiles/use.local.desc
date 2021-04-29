@@ -3,5 +3,3 @@
 # * generated automatically using pmaint *
 
 app-i18n/librime:debug - Enable debugging (including logging of input of RIME input methods)
-dev-cpp/glog:gflags - Use dev-cpp/gflags for flag parsing
-dev-cpp/glog:libunwind - Use libunwind library (sys-libs/libunwind or sys-libs/llvm-libunwind) instead of built-in fallback implementation for stack unwinding
