@@ -80,9 +80,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="geoip"
 
 BDEPEND=">=dev-lang/go-1.16.2:="
-RDEPEND="
-	geoip? ( net-misc/geoipupdate )
-	>=sys-apps/systemd-235:="
+RDEPEND="geoip? ( net-misc/geoipupdate )"
 
 src_compile() {
 	local Version=${PV} BuildTime=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
