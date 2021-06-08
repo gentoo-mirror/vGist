@@ -11,4 +11,4 @@ RDEPEND=sys-process/lsof dev-libs/glib:2 media-libs/fontconfig media-libs/mesa[X
 SLOT=0
 SRC_URI=https://apt.enpass.io/pool/main/e/enpass/enpass_6.6.1.809_amd64.deb
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	unpacker	517f16af48ee3ab88180dd58b5143213	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
-_md5_=483b81c34e86c25f8c196212e7bd36b6
+_md5_=e0fd6ec5c20cba3a5b85f0c0c8c71db6
