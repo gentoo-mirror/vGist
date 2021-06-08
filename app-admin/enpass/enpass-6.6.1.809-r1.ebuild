@@ -43,7 +43,7 @@ RDEPEND="
 BDEPEND=""
 
 PATCHES=(
-    "${FILESDIR}/enpass-desktopfile.patch"
+	"${FILESDIR}/enpass-desktopfile.patch"
 )
 
 S="${WORKDIR}"
