@@ -15,7 +15,7 @@ KEYWORDS="-* ~amd64"
 
 IUSE="pulseaudio"
 
-RESRICT="bindist mirror strip"
+RESRICT="bindist mirror"
 
 # Dependencies, require sys-apps/ripgrep
 #
