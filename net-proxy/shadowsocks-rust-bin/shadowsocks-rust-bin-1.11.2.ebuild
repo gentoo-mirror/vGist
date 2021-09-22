@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+MULTILIB_COMPAT=( abi_mips_n32 )
 
 inherit systemd
 
@@ -17,7 +18,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm ~arm64 ~mips"
+KEYWORDS="-* ~amd64 ~arm ~arm64 ~mips"	#mips not tested
 RESRICT="mirror"
 IUSE="big-endian systemd"
 REQUIRED_USE="mips? ( !big-endian )"
