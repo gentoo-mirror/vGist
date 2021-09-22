@@ -28,10 +28,15 @@ src_install() {
 	newbin "${S}/ssserver" ssserver-rust
 	newbin "${S}/ssurl" ssurl-rust
 
-	dostrip -x /usr/bin/ss*
-
-	use systemd && systemd_newunit "${FILESDIR}/shadowsocks-rust_at.service" shadowsocks-rust@.service
-	use systemd && systemd_newunit "${FILESDIR}/shadowsocks-rust-server_at.service" shadowsocks-rust-server@.service
+	if use systemd; then
+		systemd_newunit "${FILESDIR}/shadowsocks-rust_at.service" shadowsocks-rust@.service
+		systemd_newunit "${FILESDIR}/shadowsocks-rust-server_at.service" shadowsocks-rust-server@.service
+	fi
 
 	keepdir /etc/shadowsocks
+
+	dostrip -x /usr/bin/sslocal-rust \
+		/usr/bin/ssmanager-rust \
+		/usr/bin/ssserver-rust \
+		/usr/bin/ssurl-rust
 }
