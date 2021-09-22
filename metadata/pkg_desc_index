@@ -1,4 +1,5 @@
 app-admin/enpass 6.7.2.887: A cross-platform, complete password management solution.
 app-misc/ccal 2.5.3: A simple command line calendar for Chinese lunar
+net-im/wechat-uos 2.0.0: UOS wechat
 net-proxy/clash 1.7.0 1.7.1: A rule-based tunnel in Go.
 net-proxy/shadowsocks-rust-bin 1.11.2: A Rust port of shadowsocks
