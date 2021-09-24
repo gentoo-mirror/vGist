@@ -3,8 +3,6 @@
 
 EAPI=7
 
-MULTILIB_COMPAT=( abi_mips_n64 )
-
 inherit unpacker xdg
 
 MY_PV="$(ver_cut 4)"
