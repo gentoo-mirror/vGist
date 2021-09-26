@@ -66,7 +66,6 @@ src_configure() {
 		-DBUILD_STATIC=$(usex static ON OFF)
 		-DBUILD_TEST=$(usex test ON OFF)
 		-DENABLE_LOGGING=$(usex glog)
-		-DCMAKE_DISABLE_FIND_PACKAGE_Gflags=ON
 		-DENABLE_EXTERNAL_PLUGINS=ON
 		-DINSTALL_PRIVATE_HEADERS=ON
 	)
