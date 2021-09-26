@@ -1,6 +1,5 @@
 app-admin/enpass 6.7.2.887: A cross-platform, complete password management solution.
 app-misc/ccal 2.5.3: A simple command line calendar for Chinese lunar
-dev-cpp/glog 0.4.0: Google's C++ logging library
 dev-util/google-perftools 2.7-r1: Fast, multi-threaded malloc() and nifty performance analysis tools
 net-fs/samba 4.13.9-r3: Samba Suite Version 4
 net-im/tencent-qq 2.0.0.1089_beta2: Official Linux version of Tencent QQ
