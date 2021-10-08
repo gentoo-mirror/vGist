@@ -61,10 +61,6 @@ opt/tencent-qq/qq"
 
 S="${WORKDIR}"
 
-src_unpack() {
-	rpm_src_unpack
-}
-
 src_prepare() {
 	default
 
