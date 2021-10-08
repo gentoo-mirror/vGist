@@ -25,7 +25,7 @@ REQUIRED_USE="
 	mips? ( !big-endian )"
 
 RDEPEND="
-	dev-libs/nss
+	dev-libs/nss[${MULTILIB_USEDEP}]
 	gnome-base/gconf:2[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
 	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
