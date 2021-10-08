@@ -1,23 +1,23 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 MULTILIB_COMPAT=( abi_x86_64 abi_mips_n64 )
 
-inherit desktop multilib-build rpm xdg-utils
+inherit desktop multilib-build rpm xdg
 
-MY_PV=$(ver_cut 5-6)
-MY_P=$(ver_cut 1-3)-${MY_PV/beta/b}-$(ver_cut 4)
+MY_PV=$(ver_cut 1-3)-$(ver_cut 5-6)-$(ver_cut 4)
+MY_PV=${MY_PV/beta/b}
 
 DESCRIPTION="Official Linux version of Tencent QQ"
 HOMEPAGE="https://im.qq.com/linuxqq/download.html"
 LICENSE="Tencent"
-RESTRICT="bindist mirror"
+RESTRICT="bindist mirror strip"
 
 SRC_URI="
-	amd64? ( http://down.qq.com/qqweb/LinuxQQ/linuxqq_${MY_P}_x86_64.rpm )
-	arm64? ( http://down.qq.com/qqweb/LinuxQQ/linuxqq_${MY_P}_aarch64.rpm )
-	mips? ( http://down.qq.com/qqweb/LinuxQQ/linuxqq_${MY_P}_mips64el.rpm )
+	amd64? ( http://down.qq.com/qqweb/LinuxQQ/linuxqq_${MY_PV}_x86_64.rpm )
+	arm64? ( http://down.qq.com/qqweb/LinuxQQ/linuxqq_${MY_PV}_aarch64.rpm )
+	mips? ( http://down.qq.com/qqweb/LinuxQQ/linuxqq_${MY_PV}_mips64el.rpm )
 "
 
 SLOT="0"
@@ -53,17 +53,8 @@ RDEPEND="
 	x11-libs/libX11:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
 "
-DEPEND=""
-BDEPEND=""
-
-QA_PREBUILT="opt/tencent-qq/crashpad_handler
-opt/tencent-qq/qq"
 
 S="${WORKDIR}"
-
-src_unpack() {
-	rpm_src_unpack
-}
 
 src_prepare() {
 	default
@@ -97,14 +88,4 @@ src_install() {
 	doexe usr/local/bin/{crashpad_handler,qq}
 	doins usr/local/share/tencent-qq/{qq.png,res.db}
 	dosym ../../opt/tencent-qq/qq usr/bin/qq
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
 }
