@@ -81,11 +81,13 @@ src_prepare() {
 src_install() {
 	# this is not needed, the desktop entry file refers to the install root
 	# doicon usr/share/tencent-qq/qq.png
-	domenu usr/share/applications/qq.desktop
+	domenu "${S}"/usr/share/applications/qq.desktop
+	dodoc "${S}"/usr/local/share/tencent-qq/CHANGELOG.txt
 
 	insinto /opt/tencent-qq
+	doins "${S}"/usr/local/share/tencent-qq/{qq.png,res.db}
 	exeinto /opt/tencent-qq
-	doexe usr/local/bin/{crashpad_handler,qq}
-	doins usr/local/share/tencent-qq/{qq.png,res.db}
-	dosym ../../opt/tencent-qq/qq usr/bin/qq
+	doexe "${S}"/usr/local/bin/{crashpad_handler,qq}
+
+	dosym /opt/tencent-qq/qq /usr/bin/qq
 }
