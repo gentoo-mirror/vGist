@@ -12,7 +12,7 @@ MY_PV=${MY_PV/beta/b}
 DESCRIPTION="Official Linux version of Tencent QQ"
 HOMEPAGE="https://im.qq.com/linuxqq/download.html"
 LICENSE="Tencent"
-RESTRICT="bindist mirror"
+RESTRICT="bindist mirror strip"
 
 SRC_URI="
 	amd64? ( http://down.qq.com/qqweb/LinuxQQ/linuxqq_${MY_PV}_x86_64.rpm )
@@ -53,11 +53,6 @@ RDEPEND="
 	x11-libs/libX11:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
 "
-DEPEND=""
-BDEPEND=""
-
-QA_PREBUILT="opt/tencent-qq/crashpad_handler
-opt/tencent-qq/qq"
 
 S="${WORKDIR}"
 
