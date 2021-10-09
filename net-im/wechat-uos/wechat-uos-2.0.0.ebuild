@@ -1,7 +1,7 @@
 # Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 MULTILIB_COMPAT=( abi_x86_64 abi_mips_n64 )
 
 inherit unpacker desktop multilib-build xdg
