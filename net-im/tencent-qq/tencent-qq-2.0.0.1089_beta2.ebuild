@@ -89,5 +89,5 @@ src_install() {
 	exeinto /opt/tencent-qq
 	doexe "${S}"/usr/local/bin/{crashpad_handler,qq}
 
-	dosym /opt/tencent-qq/qq /usr/bin/qq
+	dosym ../../opt/tencent-qq/qq /usr/bin/qq
 }
