@@ -6,8 +6,9 @@ MULTILIB_COMPAT=( abi_x86_64 abi_mips_n64 )
 
 inherit desktop multilib-build rpm xdg
 
-MY_PV=$(ver_cut 1-3)-$(ver_cut 5-6)-$(ver_cut 4)
-MY_PV=${MY_PV/beta/b}
+MY_PV=$(ver_cut 1-3)-b$(ver_cut 5)-$(ver_cut 7)
+#MY_PV=$(ver_cut 1-3)-$(ver_cut 4-5)-$(ver_cut 7)
+#MY_PV=${MY_PV/beta/b}
 
 DESCRIPTION="Official Linux version of Tencent QQ"
 HOMEPAGE="https://im.qq.com/linuxqq/download.html"
