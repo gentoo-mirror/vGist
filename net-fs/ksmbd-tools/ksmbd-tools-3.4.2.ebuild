@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools systemd
+inherit autotools linux-info systemd
 
 DESCRIPTION="cifsd/ksmbd kernel server userspace utilities"
 HOMEPAGE="https://github.com/cifsd-team/ksmbd-tools"
@@ -22,6 +22,15 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 
 DOCS=( AUTHORS README Documentation/configuration.txt )
+
+pkg_setup() {
+	if kernel_is -lt 5 15 0; then
+		eerror
+		eerror "${PN} currently only supports kernel >= 5.15.0"
+		eerror
+		die "Upgrade to kernel >= 5.15.0 before installing ksmbd-tools"
+	fi
+}
 
 src_prepare() {
 	default
