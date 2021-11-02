@@ -8,6 +8,7 @@ inherit autotools systemd
 DESCRIPTION="cifsd kernel server userspace utilities"
 HOMEPAGE="https://github.com/cifsd-team/ksmbd-tools"
 SRC_URI="https://github.com/cifsd-team/ksmbd-tools/archive/${PV}.tar.gz -> ${P}.tar.gz"
+RESTRICT="mirror"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -33,6 +34,7 @@ src_configure(){
 
 src_install() {
 	emake DESTDIR="${D}" install
+	einstalldocs
 
 	insinto /etc/ksmbd
 	doins "${S}"/smb.conf.example
