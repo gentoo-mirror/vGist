@@ -5,7 +5,7 @@ EAPI=8
 
 inherit autotools systemd
 
-DESCRIPTION="cifsd kernel server userspace utilities"
+DESCRIPTION="cifsd/ksmbd kernel server userspace utilities"
 HOMEPAGE="https://github.com/cifsd-team/ksmbd-tools"
 SRC_URI="https://github.com/cifsd-team/ksmbd-tools/archive/${PV}.tar.gz -> ${P}.tar.gz"
 RESTRICT="mirror"
