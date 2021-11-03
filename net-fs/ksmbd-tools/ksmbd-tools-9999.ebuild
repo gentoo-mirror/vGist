@@ -55,5 +55,5 @@ src_install() {
 	insinto /etc/ksmbd
 	doins "${S}"/smb.conf.example
 
-	systemd_dounit "${FILESDIR}"/ksmbd.service
+	systemd_dounit "${S}"/ksmbd.service
 }
