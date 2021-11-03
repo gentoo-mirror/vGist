@@ -10,7 +10,7 @@ if [[ "${PV}" == 9999 ]]; then
 	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/cifsd-team/ksmbd-tools.git"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc64 ~riscv ~s390 ~x86"
 	SRC_URI="https://github.com/cifsd-team/ksmbd-tools/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
