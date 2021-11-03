@@ -20,7 +20,7 @@ RESTRICT="mirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="kerberos"
+IUSE="kerberos systemd"
 
 DEPEND=">=dev-libs/glib-2.40
 	>=dev-libs/libnl-3.0
