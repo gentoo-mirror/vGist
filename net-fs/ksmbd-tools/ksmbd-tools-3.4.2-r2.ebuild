@@ -45,8 +45,7 @@ src_configure(){
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	einstalldocs
+	default
 
 	insinto /etc/ksmbd
 	doins "${S}"/smb.conf.example
