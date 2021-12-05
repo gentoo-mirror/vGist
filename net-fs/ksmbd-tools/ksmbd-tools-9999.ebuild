@@ -20,7 +20,7 @@ RESTRICT="mirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="kerberos systemd"
+IUSE="kerberos"
 
 DEPEND=">=dev-libs/glib-2.40
 	>=dev-libs/libnl-3.0
@@ -46,5 +46,5 @@ src_install() {
 	insinto /etc/ksmbd
 	doins "${S}"/smb.conf.example
 
-	use systemd && systemd_dounit "${S}"/ksmbd.service
+	systemd_dounit "${S}"/ksmbd.service
 }
