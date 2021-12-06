@@ -13,7 +13,7 @@ LICENSE="SINEW-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-IUSE=""
+IUSE="pulseaudio"
 
 RESRICT="bindist mirror"
 
@@ -35,7 +35,8 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/libglvnd
-	media-sound/pulseaudio
+	pulseaudio? ( media-sound/pulseaudio )
+	!pulseaudio? ( media-sound/apulse )
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
@@ -55,6 +56,10 @@ QA_PRESTRIPPED="opt/enpass/wifisyncserver_bin
 	opt/enpass/Enpass
 	opt/enpass/importer_enpass"
 
+PATCHES=(
+	"${FILESDIR}/enpass-desktopfile.patch"
+)
+
 S="${WORKDIR}"
 
 src_install() {
@@ -62,14 +67,21 @@ src_install() {
 	doins -r opt/enpass/.
 	fperms +x /opt/enpass/{Enpass,importer_enpass,wifisyncserver_bin}
 
-	dobin "${FILESDIR}/enpass"
+	dodir /usr/bin
+	cat <<-EOF >"${D}"/usr/bin/enpass || die
+#! /bin/sh
+LD_LIBRARY_PATH="/usr/$(get_libdir)/apulse" \\
+exec /opt/enpass/Enpass "\$@"
+EOF
+
+	fperms +x /usr/bin/enpass
 
 	insinto /usr/share/mime/packages
 	doins usr/share/mime/packages/application-enpass.xml
 
 	domenu usr/share/applications/enpass.desktop
 
-	gzip -d usr/share/doc/enpass/changelog.gz || die
+	gzip -d usr/share/doc/enpass/changelog.gz
 	dodoc usr/share/doc/enpass/changelog
 
 	local size
