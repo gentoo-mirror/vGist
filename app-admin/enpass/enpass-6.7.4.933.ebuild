@@ -55,14 +55,12 @@ QA_PRESTRIPPED="opt/enpass/wifisyncserver_bin
 	opt/enpass/Enpass
 	opt/enpass/importer_enpass"
 
-PATCHES=(
-	"${FILESDIR}/enpass-desktopfile.patch"
-)
-
 S="${WORKDIR}"
 
 src_prepare() {
 	default
+	sed -i 's,Exec=/opt/enpass/Enpass,Exec=/usr/bin/enpass,' \
+		usr/share/applications/enpass.desktop || die
 	gzip -d usr/share/doc/enpass/changelog.gz || die
 }
 
