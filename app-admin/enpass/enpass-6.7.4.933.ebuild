@@ -51,9 +51,11 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango"
 
-QA_PRESTRIPPED="opt/enpass/wifisyncserver_bin
+QA_PREBUILT="
+	opt/enpass/wifisyncserver_bin
 	opt/enpass/Enpass
-	opt/enpass/importer_enpass"
+	opt/enpass/importer_enpass
+"
 
 S="${WORKDIR}"
 
