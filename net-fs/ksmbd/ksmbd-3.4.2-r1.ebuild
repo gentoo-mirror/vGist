@@ -52,3 +52,8 @@ pkg_setup() {
 
 	linux-mod_pkg_setup
 }
+
+src_prepare() {
+	default
+	sed -i "s/\$(shell uname -r)/${KV_FULL}/" Makefile
+}
