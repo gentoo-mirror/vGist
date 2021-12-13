@@ -10,4 +10,4 @@ RDEPEND=app-arch/xz-utils dev-libs/glib:2 media-libs/fontconfig media-libs/freet
 SLOT=0
 SRC_URI=https://apt.enpass.io/pool/main/e/enpass/enpass_6.7.4.933_amd64.deb
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa	multilib	4b66d835ec72e021e359bb81eacfe988	unpacker	928e1f35ef78ba9fc2b214e29c2b55a4	xdg-utils	4f29a8b760a594a212abe9c2ba957c31	xdg	6024fbc93167fad782e2032933654857
-_md5_=cace3a022aa41cb1d12048aa1f0608df
+_md5_=66621de3794c29898d54e43031ee2c7b
