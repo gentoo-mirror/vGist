@@ -67,7 +67,12 @@ src_prepare() {
 }
 
 src_install() {
-	dobin "${FILESDIR}/enpass"
+	cat <<- EOF >"${S}/enpass" || die
+		#! /usr/bin/env sh
+		exec /opt/enpass/Enpass "\$@"
+	EOF
+	dobin "${S}/enpass"
+
 	domenu usr/share/applications/enpass.desktop
 	dodoc usr/share/doc/enpass/changelog
 
