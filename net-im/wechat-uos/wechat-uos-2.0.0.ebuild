@@ -43,6 +43,8 @@ RDEPEND="
 
 S="${WORKDIR}"
 
+COM_WEIXIN="${S}/opt/apps/com.qq.weixin"
+
 QA_PREBUILT="
 	opt/wechat-uos/libffmpeg.so
 	opt/wechat-uos/libnode.so
@@ -52,21 +54,22 @@ QA_PREBUILT="
 "
 
 src_install() {
+	domenu "${FILESDIR}/${PN}.desktop"
 	dobin "${FILESDIR}"/wechat-uos
+	dodoc "${COM_WEIXIN}/entries/doc/wechat/copyright"
+	doicon "${COM_WEIXIN}/entries/pixmaps/wechat.png"
 
-	insinto /usr/share/icons
-	doins -r "${S}"/opt/apps/com.qq.weixin/entries/icons/hicolor
-	insinto /usr/share/applications
-	doins "${FILESDIR}"/wechat-uos.desktop
+	for size in 16 48 64 128 256; do
+		doicon -s ${size} "${COM_WEIXIN}/entries/icons/hicolor/${size}x${size}/apps/wechat.png"
+	done
 
 	insinto /usr/lib/license
-	doins "${S}"/usr/lib/license/libuosdevicea.so
+	doins "${S}/usr/lib/license/libuosdevicea.so"
 
-	insinto /opt/wechat-uos
-	doins -r "${S}"/opt/apps/com.qq.weixin/files/*
+	insinto "/opt/${PN}"
+	doins -r "${COM_WEIXIN}"/files/*
 	fperms 0755 /opt/wechat-uos/wechat
 
-	insinto /opt/wechat-uos/crap
+	insinto "/opt/${PN}/crap"
 	doins "${FILESDIR}"/{uos-lsb,uos-release}
-
 }
