@@ -54,24 +54,14 @@ QA_PREBUILT="
 "
 
 src_install() {
-	cat <<- EOF >"${S}/wechat-uos"  || die
-		#!/bin/bash -e
-		bwrap --dev-bind / / \
-		--bind /opt/wechat-uos/crap/uos-release /etc/os-release \
-		--bind /opt/wechat-uos/crap/uos-lsb /etc/lsb-release \
-		/opt/wechat-uos/wechat
-	EOF
-
-	dobin "${S}"/wechat-uos
+	domenu "${FILESDIR}/${PN}.desktop"
+	dobin "${FILESDIR}"/wechat-uos
+	dodoc "${COM_WEIXIN}/entries/doc/wechat/copyright"
+	doicon "${COM_WEIXIN}/entries/pixmaps/wechat.png"
 
 	for size in 16 48 64 128 256; do
 		doicon -s ${size} "${COM_WEIXIN}/entries/icons/hicolor/${size}x${size}/apps/wechat.png"
 	done
-	doicon "${COM_WEIXIN}/entries/pixmaps/wechat.png"
-
-	domenu "${FILESDIR}/${PN}.desktop"
-
-	dodoc "${COM_WEIXIN}/entries/doc/wechat/copyright"
 
 	insinto /usr/lib/license
 	doins "${S}/usr/lib/license/libuosdevicea.so"
