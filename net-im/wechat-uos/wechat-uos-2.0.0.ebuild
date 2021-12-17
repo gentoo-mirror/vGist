@@ -70,6 +70,6 @@ src_install() {
 	doins -r "${COM_WEIXIN}"/files/*
 	fperms +x /opt/wechat-uos/wechat
 
-	insinto "/opt/${PN}/crap"
+	insinto /opt/wechat-uos/crap
 	doins "${FILESDIR}"/{uos-lsb,uos-release}
 }
