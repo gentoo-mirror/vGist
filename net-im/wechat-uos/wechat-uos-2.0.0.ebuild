@@ -54,8 +54,8 @@ QA_PREBUILT="
 "
 
 src_install() {
-	domenu "${FILESDIR}/${PN}.desktop"
-	dobin "${FILESDIR}"/wechat-uos
+	domenu "${FILESDIR}/wechat-uos.desktop"
+	dobin "${FILESDIR}/wechat-uos"
 	dodoc "${COM_WEIXIN}/entries/doc/wechat/copyright"
 	doicon "${COM_WEIXIN}/entries/pixmaps/wechat.png"
 
@@ -66,9 +66,9 @@ src_install() {
 	insinto /usr/lib/license
 	doins "${S}/usr/lib/license/libuosdevicea.so"
 
-	insinto "/opt/${PN}"
+	insinto "/opt/wechat-uos"
 	doins -r "${COM_WEIXIN}"/files/*
-	fperms 0755 /opt/wechat-uos/wechat
+	fperms +x /opt/wechat-uos/wechat
 
 	insinto "/opt/${PN}/crap"
 	doins "${FILESDIR}"/{uos-lsb,uos-release}
