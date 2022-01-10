@@ -1,0 +1,16 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DESCRIPTION=UOS weixin
+EAPI=8
+HOMEPAGE=https://www.chinauos.com/resource/download-professional
+IDEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+INHERIT=unpacker desktop multilib-build xdg
+IUSE=big-endian abi_x86_64
+KEYWORDS=-* ~amd64 ~arm64
+LICENSE=MIT
+RDEPEND=app-accessibility/at-spi2-atk[abi_x86_64(-)?] app-accessibility/at-spi2-core[abi_x86_64(-)?] dev-libs/atk[abi_x86_64(-)?] dev-libs/expat[abi_x86_64(-)?] dev-libs/glib[abi_x86_64(-)?] dev-libs/nspr[abi_x86_64(-)?] dev-libs/nss[abi_x86_64(-)?] gnome-base/gconf:2[abi_x86_64(-)?] media-libs/alsa-lib:0[abi_x86_64(-)?] media-libs/fontconfig:1.0[abi_x86_64(-)?] media-libs/mesa[abi_x86_64(-)?] net-print/cups:0[abi_x86_64(-)?] sys-apps/dbus[abi_x86_64(-)?] x11-libs/cairo:0[abi_x86_64(-)?] x11-libs/gdk-pixbuf:2[abi_x86_64(-)?] x11-libs/gtk+:2[abi_x86_64(-)?] x11-libs/libX11[abi_x86_64(-)?] x11-libs/libXcomposite[abi_x86_64(-)?] x11-libs/libXdamage[abi_x86_64(-)?] x11-libs/libXext[abi_x86_64(-)?] x11-libs/libXfixes[abi_x86_64(-)?] x11-libs/libXrandr[abi_x86_64(-)?] x11-libs/libdrm[abi_x86_64(-)?] x11-libs/libxcb[abi_x86_64(-)?] x11-libs/libxkbcommon[abi_x86_64(-)?] x11-libs/libxshmfence[abi_x86_64(-)?] x11-libs/pango[abi_x86_64(-)?] sys-apps/lsb-release sys-apps/bubblewrap
+REQUIRED_USE=arm64? ( !big-endian ) || ( abi_x86_64 )
+RESTRICT=bindist strip mirror
+SLOT=0
+SRC_URI=amd64? ( https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.qq.weixin/com.tencent.weixin_2.1.1_amd64.deb ) arm64? ( https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.qq.weixin/com.tencent.weixin_2.1.1_arm64.deb )
+_eclasses_=toolchain-funcs	badd6e329e1f3e6bee99b35bf8763ce8	multilib	de4beb52bfa93c4c5d96792a6b5e1784	unpacker	03b2fab39d555f46843c92f44a40a721	desktop	c0d27bf73aa08ca05b663dbd31fbef28	multibuild	05a584848db4901c97fcd94ae7cc3a97	multilib-build	19ec165e9adcaa4c132b9e3fe3e7f556	xdg-utils	4f29a8b760a594a212abe9c2ba957c31	xdg	6024fbc93167fad782e2032933654857
+_md5_=2af2d2a83145641bc6a159bfed80dead
