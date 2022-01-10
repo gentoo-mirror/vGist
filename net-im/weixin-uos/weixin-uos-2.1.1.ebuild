@@ -56,8 +56,6 @@ RDEPEND="
 
 S="${WORKDIR}"
 
-COM_WEIXIN="${S}/opt/apps/com.tencent.weixin"
-
 QA_PREBUILT="*"
 
 src_prepare() {
