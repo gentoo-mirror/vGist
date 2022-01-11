@@ -82,8 +82,9 @@ src_install() {
 	insinto /opt/weixin-uos/crap
 	doins "${FILESDIR}"/uos-{lsb,release}
 
-	insinto /usr/lib/license
+	insinto /opt/weixin-uos/crap/usr/lib/license
 	doins "${S}/usr/lib/license/libuosdevicea.so"
+	keepdir /usr/lib/license
 
 	insinto /opt/weixin-uos/crap/var/uos
 	newins "${FILESDIR}/license.key" .license.key
