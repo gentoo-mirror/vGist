@@ -3,4 +3,4 @@ app-i18n/librime 1.7.3-r1: RIME (Rime Input Method Engine) core library
 app-misc/ccal 2.5.3: A simple command line calendar for Chinese lunar
 dev-util/google-perftools 2.9.1-r2: Fast, multi-threaded malloc() and nifty performance analysis tools
 net-im/tencent-qq 2.0.0_beta2_p1089: Official Linux version of Tencent QQ
-net-im/weixin-uos 2.1.1: UOS weixin
+net-im/weixin-uos 2.1.1 2.1.2: UOS weixin
