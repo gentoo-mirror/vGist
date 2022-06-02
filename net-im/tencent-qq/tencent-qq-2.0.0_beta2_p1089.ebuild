@@ -2,13 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-MULTILIB_COMPAT=( abi_x86_64 abi_mips_n64 )
 
-inherit desktop multilib-build rpm xdg
+inherit desktop rpm xdg
 
 MY_PV=$(ver_cut 1-3)-b$(ver_cut 5)-$(ver_cut 7)
-#MY_PV=$(ver_cut 1-3)-$(ver_cut 4-5)-$(ver_cut 7)
-#MY_PV=${MY_PV/beta/b}
 
 DESCRIPTION="Official Linux version of Tencent QQ"
 HOMEPAGE="https://im.qq.com/linuxqq/download.html"
@@ -25,7 +22,6 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~mips"  # arm64 not tested
 IUSE="big-endian"
 REQUIRED_USE="
-	arm64? ( !big-endian )
 	mips? ( !big-endian )
 "
 
@@ -50,14 +46,14 @@ QA_PREBUILT="
 #
 # NOTE: sys-devel/gcc and sys-libs/glibc are omitted, not sure if this is right
 RDEPEND="
-	dev-libs/glib:2[${MULTILIB_USEDEP}]
-	dev-libs/nspr:0[${MULTILIB_USEDEP}]
-	dev-libs/nss:0[${MULTILIB_USEDEP}]
-	x11-libs/cairo:0[${MULTILIB_USEDEP}]
-	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
-	x11-libs/gtk+:2[${MULTILIB_USEDEP}]
-	x11-libs/libX11:0[${MULTILIB_USEDEP}]
-	x11-libs/pango:0[${MULTILIB_USEDEP}]
+	dev-libs/glib:2
+	dev-libs/nspr:0
+	dev-libs/nss:0
+	x11-libs/cairo:0
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:2
+	x11-libs/libX11:0
+	x11-libs/pango:0
 "
 
 S="${WORKDIR}"
