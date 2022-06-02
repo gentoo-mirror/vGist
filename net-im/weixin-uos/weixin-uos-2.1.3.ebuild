@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit unpacker desktop multilib-build xdg
+inherit unpacker desktop xdg
 
 DESCRIPTION="UOS weixin"
 HOMEPAGE="https://www.chinauos.com/resource/download-professional"
@@ -18,38 +17,34 @@ SRC_URI="
 SLOT="0"
 RESTRICT="bindist strip mirror"
 LICENSE="MIT"
-IUSE="big-endian"
-REQUIRED_USE="
-	arm64? ( !big-endian )"
 
 RDEPEND="
-	app-accessibility/at-spi2-atk[${MULTILIB_USEDEP}]
-	app-accessibility/at-spi2-core[${MULTILIB_USEDEP}]
-	dev-libs/atk[${MULTILIB_USEDEP}]
-	dev-libs/expat[${MULTILIB_USEDEP}]
-	dev-libs/glib[${MULTILIB_USEDEP}]
-	dev-libs/nspr[${MULTILIB_USEDEP}]
-	dev-libs/nss[${MULTILIB_USEDEP}]
-	gnome-base/gconf:2[${MULTILIB_USEDEP}]
-	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
-	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
-	media-libs/mesa[${MULTILIB_USEDEP}]
-	net-print/cups:0[${MULTILIB_USEDEP}]
-	sys-apps/dbus[${MULTILIB_USEDEP}]
-	x11-libs/cairo:0[${MULTILIB_USEDEP}]
-	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
-	x11-libs/gtk+:2[${MULTILIB_USEDEP}]
-	x11-libs/libX11[${MULTILIB_USEDEP}]
-	x11-libs/libXcomposite[${MULTILIB_USEDEP}]
-	x11-libs/libXdamage[${MULTILIB_USEDEP}]
-	x11-libs/libXext[${MULTILIB_USEDEP}]
-	x11-libs/libXfixes[${MULTILIB_USEDEP}]
-	x11-libs/libXrandr[${MULTILIB_USEDEP}]
-	x11-libs/libdrm[${MULTILIB_USEDEP}]
-	x11-libs/libxcb[${MULTILIB_USEDEP}]
-	x11-libs/libxkbcommon[${MULTILIB_USEDEP}]
-	x11-libs/libxshmfence[${MULTILIB_USEDEP}]
-	x11-libs/pango[${MULTILIB_USEDEP}]
+	app-accessibility/at-spi2-atk
+	app-accessibility/at-spi2-core
+	dev-libs/atk
+	dev-libs/expat
+	dev-libs/glib
+	dev-libs/nspr
+	dev-libs/nss
+	media-libs/alsa-lib:0
+	media-libs/fontconfig:1.0
+	media-libs/mesa
+	net-print/cups:0
+	sys-apps/dbus
+	x11-libs/cairo:0
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:2
+	x11-libs/libX11
+	x11-libs/libXcomposite
+	x11-libs/libXdamage
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXrandr
+	x11-libs/libdrm
+	x11-libs/libxcb
+	x11-libs/libxkbcommon
+	x11-libs/libxshmfence
+	x11-libs/pango
 	sys-apps/lsb-release
 	sys-apps/bubblewrap
 "
@@ -61,9 +56,9 @@ QA_PREBUILT="*"
 src_prepare() {
 	default
 
-	sed -i 's,Name=微信,Name=wexin-uos,' \
+	sed -i 's,Name=微信,Name=Wexin uos,' \
 		"${S}/usr/share/applications/weixin.desktop" || die
-	sed -i 's,/opt/apps/com.tencent.weixin/files/weixin/weixin,/usr/bin/weixin-uos,' \
+	sed -i 's,/opt/apps/com.tencent.weixin/files/weixin/weixin.sh,/usr/bin/weixin-uos,' \
 		"${S}/usr/share/applications/weixin.desktop" || die
 }
 
@@ -77,7 +72,6 @@ src_install() {
 
 	insinto /opt/weixin-uos
 	doins -r "${S}"/opt/apps/com.tencent.weixin/files/weixin/*
-	fperms +x /opt/weixin-uos/weixin
 
 	insinto /opt/weixin-uos/crap
 	doins "${FILESDIR}"/uos-{lsb,release}
