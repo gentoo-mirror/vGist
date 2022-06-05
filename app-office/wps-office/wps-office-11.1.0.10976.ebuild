@@ -20,52 +20,30 @@ SRC_URI="
 "
 
 SLOT="0"
-RESTRICT="strip mirror bindist" # mirror as explained at bug #547372
+RESTRICT="bindist mirror strip" # mirror as explained at bug #547372
 LICENSE="WPS-EULA"
 IUSE="big-endian systemd"
 REQUIRED_USE="mips? ( !big-endian )"
 
 RDEPEND="
-	x11-libs/libICE
+	app-arch/bzip2
+	dev-libs/glib:2
+	media-libs/fontconfig:1.0
+	media-libs/flac
+	media-libs/libvorbis
+	media-sound/pulseaudio
+	net-libs/libasyncns
+	net-print/cups
+	sys-apps/tcp-wrappers
+	sys-libs/libcap
+	x11-libs/gtk+:2
 	x11-libs/libSM
-	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrender
-	x11-libs/libxcb
-	media-libs/fontconfig:1.0
-	media-libs/freetype:2
-	dev-libs/glib:2
-	sys-libs/zlib:0
-	net-print/cups
-	virtual/glu
-
-	dev-libs/libpcre:3
-	dev-libs/libffi
-	media-sound/pulseaudio
-	app-arch/bzip2:0
-	dev-libs/expat
-	sys-apps/util-linux
-	dev-libs/libbsd
-	x11-libs/libXau
-	x11-libs/libXdmcp
-	x11-libs/gtk+:2
-	sys-apps/dbus
 	x11-libs/libXtst
-	sys-apps/tcp-wrappers
-	media-libs/libsndfile
-	net-libs/libasyncns
-	dev-libs/libgcrypt:0
-	app-arch/xz-utils
-	app-arch/lz4
-	sys-libs/libcap
-	media-libs/flac
-	media-libs/libogg
-	media-libs/libvorbis
-	dev-libs/libgpg-error
-	sys-apps/attr
+	x11-libs/libxcb
+	virtual/glu
 "
-DEPEND=""
-BDEPEND=""
 
 S="${WORKDIR}"
 
@@ -77,10 +55,8 @@ src_install() {
 	insinto /usr/share
 	doins -r "${S}"/usr/share/{applications,desktop-directories,icons,mime,templates}
 
-	insinto /opt/kingsoft/wps-office
-	use systemd || { rm "${S}"/opt/kingsoft/wps-office/office6/libdbus-1.so* || die ; }
-	rm "${S}"/opt/kingsoft/wps-office/office6/libstdc++.so* || die
-	doins -r "${S}"/opt/kingsoft/wps-office/{office6,templates}
+	insinto "/opt/kingsoft/${PN}"
+	doins -r "${S}"/opt/kingsoft/${PN}/{office6,templates}
 
-	fperms 0755 /opt/kingsoft/wps-office/office6/{wps,wpp,et,wpspdf,wpsoffice,promecefpluginhost,transerr,ksolaunch,wpscloudsvr}
+	fperms 0755 /opt/kingsoft/${PN}/office6/{et,ksolaunch,parsecloudfiletool,promecefpluginhost,transerr,wpp,wps,wpscloudsvr,wpsd,wpsoffice,wpspdf}
 }
