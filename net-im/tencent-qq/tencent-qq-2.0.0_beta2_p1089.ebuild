@@ -32,19 +32,8 @@ QA_PREBUILT="
 
 # the sonames are gathered with the following trick:
 #
-# readelf -a qq | rg '\(NEEDED\)' | rg -o '\[.*\]' | sed 's/^\[//; s/\]$//;'
-#
-# then combine this with something even more devilish to get the package names:
-#
-# ldd qq | \
-#     rg "$(cat previous-result | tr '\n' '|' | sed 's/^/(?:/; s/|$/)/; s/\./\\./g;')" | \
-#     rg -o '=> (.*) \(' | \
-#     sed 's/^=> //; s/($//;' | \
-#     xargs equery b | \
-#     sort | \
-#     uniq
-#
-# NOTE: sys-devel/gcc and sys-libs/glibc are omitted, not sure if this is right
+# objdump -p /path/qq | grep NEEDED | awk '{print $2}' | xargs equery b | sort | uniq
+
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr:0
