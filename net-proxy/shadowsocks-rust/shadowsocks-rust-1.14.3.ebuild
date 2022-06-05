@@ -309,7 +309,7 @@ RESTRICT="mirror strip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~mips ~x86"
+KEYWORDS="amd64 arm64 ~mips ~x86"
 IUSE="redir tun"
 
 QA_FLAGS_IGNORED="
