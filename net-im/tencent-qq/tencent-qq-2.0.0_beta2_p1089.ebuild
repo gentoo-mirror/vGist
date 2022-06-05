@@ -19,7 +19,7 @@ SRC_URI="
 "
 
 SLOT="0"
-KEYWORDS="-* ~amd64 ~mips"  # arm64 not tested
+KEYWORDS="-* ~amd64 ~arm64 ~mips"
 IUSE="big-endian"
 REQUIRED_USE="
 	mips? ( !big-endian )
