@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit unpacker xdg
+inherit systemd unpacker xdg
 
 MY_PV="$(ver_cut 4)"
 
@@ -22,7 +22,7 @@ SRC_URI="
 SLOT="0"
 RESTRICT="strip mirror bindist" # mirror as explained at bug #547372
 LICENSE="WPS-EULA"
-IUSE="big-endian systemd"
+IUSE="big-endian"
 REQUIRED_USE="mips? ( !big-endian )"
 
 RDEPEND="
@@ -78,7 +78,7 @@ src_install() {
 	doins -r "${S}"/usr/share/{applications,desktop-directories,icons,mime,templates}
 
 	insinto /opt/kingsoft/wps-office
-	use systemd || { rm "${S}"/opt/kingsoft/wps-office/office6/libdbus-1.so* || die ; }
+	rm "${S}"/opt/kingsoft/wps-office/office6/libdbus-1.so* || die
 	rm "${S}"/opt/kingsoft/wps-office/office6/libstdc++.so* || die
 	doins -r "${S}"/opt/kingsoft/wps-office/{office6,templates}
 
