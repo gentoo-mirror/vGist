@@ -18,6 +18,10 @@ SLOT="0"
 RESTRICT="bindist strip mirror"
 LICENSE="MIT"
 
+# the sonames are gathered with the following trick
+#
+# objdump -p /path/weixin | grep NEEDED | awk '{print $2}' | xargs equery b | sort | uniq
+
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
 	app-accessibility/at-spi2-core:2
