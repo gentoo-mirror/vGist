@@ -18,22 +18,25 @@ SLOT="0"
 RESTRICT="bindist strip mirror"
 LICENSE="MIT"
 
+# the sonames are gathered with the following trick
+#
+# objdump -p /path/weixin | grep NEEDED | awk '{print $2}' | xargs equery b | sort | uniq
+
 RDEPEND="
-	app-accessibility/at-spi2-atk
-	app-accessibility/at-spi2-core
+	app-accessibility/at-spi2-atk:2
+	app-accessibility/at-spi2-core:2
 	dev-libs/atk
 	dev-libs/expat
-	dev-libs/glib
+	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
-	media-libs/alsa-lib:0
-	media-libs/fontconfig:1.0
+	media-libs/alsa-lib
 	media-libs/mesa
-	net-print/cups:0
+	net-print/cups
 	sys-apps/dbus
-	x11-libs/cairo:0
+	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
