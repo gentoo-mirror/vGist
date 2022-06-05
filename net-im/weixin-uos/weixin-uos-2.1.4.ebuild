@@ -18,30 +18,23 @@ SLOT="0"
 RESTRICT="bindist strip mirror"
 LICENSE="MIT"
 
+# the sonames are gathered with the following trick
+#
+# objdump -p /path/weixin | grep NEEDED | awk '{print $2}' | xargs equery b | sort | uniq
+
 RDEPEND="
-	app-accessibility/at-spi2-atk
-	app-accessibility/at-spi2-core
-	dev-libs/atk
-	dev-libs/expat
-	dev-libs/glib
-	dev-libs/nspr
 	dev-libs/nss
-	media-libs/alsa-lib:0
-	media-libs/fontconfig:1.0
+	media-libs/alsa-lib
 	media-libs/mesa
-	net-print/cups:0
+	net-print/cups
 	sys-apps/dbus
-	x11-libs/cairo:0
+	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:2
+	x11-libs/gtk+:3[X]
 	x11-libs/libX11
 	x11-libs/libXcomposite
-	x11-libs/libXdamage
-	x11-libs/libXext
-	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/libdrm
-	x11-libs/libxcb
 	x11-libs/libxkbcommon
 	x11-libs/libxshmfence
 	x11-libs/pango
@@ -74,6 +67,7 @@ src_install() {
 
 	insinto /opt/weixin-uos
 	doins -r "${S}"/opt/apps/com.tencent.weixin/files/weixin/*
+	fperms +x /opt/weixin-uos/weixin{,.sh}
 
 	insinto /opt/weixin-uos/crap
 	doins "${FILESDIR}"/uos-{lsb,release}
