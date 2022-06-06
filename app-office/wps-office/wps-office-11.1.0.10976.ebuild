@@ -61,13 +61,11 @@ RDEPEND="
 	virtual/glu
 "
 DEPEND=""
-BDEPEND=""
+BDEPEND="dev-util/patchelf"
 
 S="${WORKDIR}"
 
 src_prepare() {
-	# non qt4 on gentoo
-	#rm "${S}"/opt/kingsoft/wps-office/office6/librpc{et,wpp,wps}api.so || die
 	# fix icu >= 71.1
 	rm "${S}"/opt/kingsoft/wps-office/office6/libstdc++.so* || die
 	# can't open on openrc system
@@ -86,6 +84,12 @@ src_install() {
 
 	insinto /opt/kingsoft/wps-office
 	doins -r "${S}"/opt/kingsoft/wps-office/{office6,templates}
+
+	local f
+	for f in $(find opt/kingsoft/wps-office -type f -name "*.so*"); do
+		[[ -f ${f} && $(od -t x1 -N 4 "${f}") == *"7f 45 4c 46"* ]] || continue
+		patchelf --set-rpath '$ORIGIN' ${f} || die "patchelf failed on ${f}"
+	done
 
 	fperms 0755 /opt/kingsoft/wps-office/office6/{et,ksolaunch,parsecloudfiletool,promecefpluginhost,transerr,wpp,wps,wpscloudsvr,wpsd,wpsoffice,wpspdf}
 }
