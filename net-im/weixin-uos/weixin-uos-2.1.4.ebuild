@@ -8,15 +8,16 @@ inherit unpacker desktop xdg
 DESCRIPTION="UOS weixin"
 HOMEPAGE="https://www.chinauos.com/resource/download-professional"
 
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* ~amd64 ~arm64 ~loong"
 
 SRC_URI="
 	amd64? ( https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.qq.weixin/com.tencent.weixin_${PV}_amd64.deb )
+	loong? ( https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.qq.weixin/com.tencent.weixin_${PV}_loongarch64.deb )
 	arm64? ( https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.qq.weixin/com.tencent.weixin_${PV}_arm64.deb )"
 
 SLOT="0"
 RESTRICT="bindist strip mirror"
-LICENSE="MIT"
+LICENSE="ISC"
 
 # the sonames are gathered with the following trick
 #
