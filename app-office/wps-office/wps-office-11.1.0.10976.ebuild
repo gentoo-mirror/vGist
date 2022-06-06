@@ -28,7 +28,6 @@ REQUIRED_USE="mips? ( !big-endian )"
 RDEPEND="
 	app-arch/bzip2
 	dev-libs/glib:2
-	dev-libs/libgpg-error
 	media-libs/fontconfig:1.0
 	media-libs/flac
 	media-libs/libvorbis
@@ -49,15 +48,6 @@ DEPEND=""
 BDEPEND="dev-util/patchelf"
 
 S="${WORKDIR}"
-
-src_prepare() {
-	# fix icu >= 71.1
-	rm "${S}"/opt/kingsoft/wps-office/office6/libstdc++.so* || die
-	# can't open on openrc system
-	use systemd || { rm "${S}"/opt/kingsoft/wps-office/office6/libdbus-1.so* || die ; }
-
-	default
-}
 
 src_install() {
 	exeinto /usr/bin
