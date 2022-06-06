@@ -26,48 +26,31 @@ IUSE="big-endian systemd"
 REQUIRED_USE="mips? ( !big-endian )"
 
 RDEPEND="
-	app-arch/lz4
-	app-arch/xz-utils
-	dev-libs/expat
+	app-arch/bzip2
 	dev-libs/glib:2
-	dev-libs/libbsd
-	dev-libs/libffi
 	dev-libs/libgpg-error
-	dev-libs/libpcre:3
-	media-libs/flac
 	media-libs/fontconfig:1.0
-	media-libs/freetype:2
-	media-libs/libogg
-	media-libs/libsndfile
+	media-libs/flac
 	media-libs/libvorbis
 	media-sound/pulseaudio
 	net-libs/libasyncns
 	net-print/cups
+	sys-apps/tcp-wrappers
+	sys-libs/libcap
 	x11-libs/gtk+:2
-	x11-libs/libICE
 	x11-libs/libSM
-	x11-libs/libX11
 	x11-libs/libXext
-	x11-libs/libXau
-	x11-libs/libXdmcp
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/libxcb
-	sys-libs/zlib:0
-	sys-apps/attr
-	sys-apps/tcp-wrappers
-	sys-apps/util-linux
-	sys-libs/libcap
 	virtual/glu
 "
 DEPEND=""
-BDEPEND=""
+BDEPEND="dev-util/patchelf"
 
 S="${WORKDIR}"
 
 src_prepare() {
-	# non qt4 on gentoo
-	#rm "${S}"/opt/kingsoft/wps-office/office6/librpc{et,wpp,wps}api.so || die
 	# fix icu >= 71.1
 	rm "${S}"/opt/kingsoft/wps-office/office6/libstdc++.so* || die
 	# can't open on openrc system
@@ -86,6 +69,12 @@ src_install() {
 
 	insinto /opt/kingsoft/wps-office
 	doins -r "${S}"/opt/kingsoft/wps-office/{office6,templates}
+
+	local f
+	for f in $(find opt/kingsoft/wps-office -type f -name "*.so*"); do
+		[[ -f ${f} && $(od -t x1 -N 4 "${f}") == *"7f 45 4c 46"* ]] || continue
+		patchelf --set-rpath '$ORIGIN' ${f} || die "patchelf failed on ${f}"
+	done
 
 	fperms 0755 /opt/kingsoft/wps-office/office6/{et,ksolaunch,parsecloudfiletool,promecefpluginhost,transerr,wpp,wps,wpscloudsvr,wpsd,wpsoffice,wpspdf}
 }
