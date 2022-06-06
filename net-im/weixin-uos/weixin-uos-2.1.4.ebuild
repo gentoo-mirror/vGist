@@ -77,6 +77,7 @@ src_install() {
 
 	insinto /opt/weixin-uos
 	doins -r "${S}"/opt/apps/com.tencent.weixin/files/weixin/*
+	fperms +x /opt/weixin-uos/weixin{,.sh}
 
 	insinto /opt/weixin-uos/crap
 	doins "${FILESDIR}"/uos-{lsb,release}
