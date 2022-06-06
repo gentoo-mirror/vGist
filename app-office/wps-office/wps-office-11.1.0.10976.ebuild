@@ -26,7 +26,6 @@ IUSE="big-endian systemd"
 REQUIRED_USE="mips? ( !big-endian )"
 
 RDEPEND="
-	app-arch/bzip2:0
 	app-arch/lz4
 	app-arch/xz-utils
 	dev-libs/expat
@@ -35,8 +34,6 @@ RDEPEND="
 	dev-libs/libffi
 	dev-libs/libgpg-error
 	dev-libs/libpcre:3
-	dev-qt/qtgui:5
-	dev-qt/qtxml:5
 	media-libs/flac
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
@@ -58,7 +55,6 @@ RDEPEND="
 	x11-libs/libxcb
 	sys-libs/zlib:0
 	sys-apps/attr
-	sys-apps/dbus
 	sys-apps/tcp-wrappers
 	sys-apps/util-linux
 	sys-libs/libcap
