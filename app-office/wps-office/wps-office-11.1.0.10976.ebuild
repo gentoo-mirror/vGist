@@ -61,7 +61,7 @@ RDEPEND="
 	virtual/glu
 "
 DEPEND=""
-BDEPEND=""
+BDEPEND="dev-util/patchelf"
 
 S="${WORKDIR}"
 
