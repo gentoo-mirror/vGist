@@ -49,6 +49,16 @@ BDEPEND="dev-util/patchelf"
 
 S="${WORKDIR}"
 
+src_prepare() {
+	default
+
+	local _f
+	for _f in $(find ${S}/opt/kingsoft/wps-office/office6); do
+		[[ -f ${_f} && $(od -t x1 -N 4 "${_f}") == *"7f 45 4c 46"* ]] || continue
+		patchelf --set-rpath "/opt/kingsoft/wps-office/office6" ${_f} || die "patchelf failed on ${_f}"
+	done
+}
+
 src_install() {
 	exeinto /usr/bin
 	exeopts -m0755
@@ -57,14 +67,8 @@ src_install() {
 	insinto /usr/share
 	doins -r "${S}"/usr/share/{applications,desktop-directories,icons,mime,templates}
 
-	insinto /opt/kingsoft/wps-office
-	doins -r "${S}"/opt/kingsoft/wps-office/{office6,templates}
+	insinto "/opt/kingsoft/${PN}"
+	doins -r "${S}"/opt/kingsoft/${PN}/{office6,templates}
 
-	local f
-	for f in $(find opt/kingsoft/wps-office -type f -name "*.so*"); do
-		[[ -f ${f} && $(od -t x1 -N 4 "${f}") == *"7f 45 4c 46"* ]] || continue
-		patchelf --set-rpath '$ORIGIN' ${f} || die "patchelf failed on ${f}"
-	done
-
-	fperms 0755 /opt/kingsoft/wps-office/office6/{et,ksolaunch,parsecloudfiletool,promecefpluginhost,transerr,wpp,wps,wpscloudsvr,wpsd,wpsoffice,wpspdf}
+	fperms 0755 /opt/kingsoft/${PN}/office6/{et,ksolaunch,parsecloudfiletool,promecefpluginhost,transerr,wpp,wps,wpscloudsvr,wpsd,wpsoffice,wpspdf}
 }
