@@ -17,7 +17,7 @@ SRC_URI="
 
 SLOT="0"
 RESTRICT="bindist strip mirror"
-LICENSE="MIT"
+LICENSE="ISC"
 
 # the sonames are gathered with the following trick
 #
