@@ -47,16 +47,6 @@ RDEPEND="
 
 S="${WORKDIR}"
 
-src_prepare() {
-	default
-
-	local _f
-	for _f in $(find ${S}/opt/kingsoft/wps-office/office6); do
-		[[ -f ${_f} && $(od -t x1 -N 4 "${_f}") == *"7f 45 4c 46"* ]] || continue
-		patchelf --set-rpath "/opt/kingsoft/wps-office/office6" ${_f} || die "patchelf failed on ${_f}"
-	done
-}
-
 src_install() {
 	exeinto /usr/bin
 	exeopts -m0755
