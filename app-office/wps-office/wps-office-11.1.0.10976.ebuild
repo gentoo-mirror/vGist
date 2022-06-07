@@ -44,8 +44,6 @@ RDEPEND="
 	x11-libs/libxcb
 	virtual/glu
 "
-DEPEND=""
-BDEPEND="dev-util/patchelf"
 
 S="${WORKDIR}"
 
