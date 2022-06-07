@@ -22,7 +22,7 @@ SRC_URI="
 SLOT="0"
 RESTRICT="bindist mirror strip" # mirror as explained at bug #547372
 LICENSE="WPS-EULA"
-IUSE="big-endian systemd"
+IUSE="big-endian"
 REQUIRED_USE="mips? ( !big-endian )"
 
 RDEPEND="
