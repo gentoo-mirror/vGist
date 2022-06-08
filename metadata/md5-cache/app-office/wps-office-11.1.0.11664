@@ -1,11 +1,10 @@
-BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
-DEFINED_PHASES=install postinst postrm preinst setup unpack
+DEFINED_PHASES=install postinst postrm preinst unpack
 DESCRIPTION=WPS Office is an office productivity suite, Here is the Chinese version
 EAPI=8
 HOMEPAGE=http://www.wps.cn/product/wpslinux/ http://wps-community.org/
 IDEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
-INHERIT=font unpacker xdg
-IUSE=big-endian X
+INHERIT=unpacker xdg
+IUSE=big-endian
 KEYWORDS=amd64 ~arm64 ~loong ~mips
 LICENSE=WPS-EULA
 RDEPEND=app-arch/bzip2 dev-libs/glib:2 media-libs/fontconfig:1.0 media-libs/flac media-libs/libvorbis media-sound/pulseaudio net-libs/libasyncns net-print/cups sys-apps/tcp-wrappers sys-libs/libcap x11-libs/gtk+:2 x11-libs/libSM x11-libs/libXext x11-libs/libXrender x11-libs/libXtst x11-libs/libxcb virtual/glu
@@ -13,5 +12,5 @@ REQUIRED_USE=mips? ( !big-endian )
 RESTRICT=bindist mirror strip
 SLOT=0/11664
 SRC_URI=amd64? ( https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/11664/wps-office_11.1.0.11664_amd64.deb ) arm64? ( https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/11664/wps-office_11.1.0.11664_arm64.deb ) loong? ( https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/11664/wps-office_11.1.0.11664_loongarch64.deb ) mips? ( https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/11664/wps-office_11.1.0.11664_mips64el.deb )
-_eclasses_=font	d31f12a0f6e13d56dc3062e76ae58a61	toolchain-funcs	fd9cde67030b26e479eeadaced488253	multilib	4fbbbc98f236f1b43acd99476bc3cd85	unpacker	697382d119fd3d195f110b7979184285	xdg-utils	fffb53a53cf17c9c0c998a3c0a590c7e	xdg	6024fbc93167fad782e2032933654857
-_md5_=801b16f66059f8413dcb88d740a59ad4
+_eclasses_=toolchain-funcs	fd9cde67030b26e479eeadaced488253	multilib	4fbbbc98f236f1b43acd99476bc3cd85	unpacker	697382d119fd3d195f110b7979184285	xdg-utils	fffb53a53cf17c9c0c998a3c0a590c7e	xdg	6024fbc93167fad782e2032933654857
+_md5_=49cc7419dddd4b57a42209bc1d738736
