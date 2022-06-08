@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit unpacker xdg
+inherit font unpacker xdg
 
 MY_PV="$(ver_cut 4)"
 
@@ -19,7 +19,7 @@ SRC_URI="
 	mips?	( https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${MY_PV}/${PN}_${PV}_mips64el.deb )
 "
 
-SLOT="0"
+SLOT="0/${MY_PV}"
 RESTRICT="bindist mirror strip"
 LICENSE="WPS-EULA"
 IUSE="big-endian"
@@ -53,10 +53,10 @@ src_install() {
 	doexe "${S}"/usr/bin/*
 
 	insinto /usr/share
-	doins -r "${S}"/usr/share/{applications,desktop-directories,icons,mime,templates}
+	doins -r "${S}"/usr/share/{applications,desktop-directories,fonts,icons,mime,templates}
 
 	insinto "/opt/kingsoft/${PN}"
 	doins -r "${S}"/opt/kingsoft/${PN}/{office6,templates}
 
-	fperms 0755 /opt/kingsoft/${PN}/office6/{et,ksolaunch,parsecloudfiletool,promecefpluginhost,transerr,wpp,wps,wpscloudsvr,wpsd,wpsoffice,wpspdf}
+	fperms 0755 /opt/kingsoft/${PN}/office6/{et,ksolaunch,promecefpluginhost,transerr,wpp,wps,wpscloudsvr,wpsd,wpsoffice,wpspdf}
 }
