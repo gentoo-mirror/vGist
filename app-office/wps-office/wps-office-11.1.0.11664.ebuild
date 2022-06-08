@@ -48,6 +48,9 @@ RDEPEND="
 S="${WORKDIR}"
 
 src_install() {
+	insinto /etc/xdg/menus/
+	doins "${S}"/etc/xdg/menus/applications-merged/wps-office.menu
+
 	exeinto /usr/bin
 	exeopts -m0755
 	doexe "${S}"/usr/bin/*
@@ -55,8 +58,8 @@ src_install() {
 	insinto /usr/share
 	doins -r "${S}"/usr/share/{applications,desktop-directories,icons,mime,templates}
 
-	insinto "/opt/kingsoft/${PN}"
-	doins -r "${S}"/opt/kingsoft/${PN}/{office6,templates}
+	insinto /opt/kingsoft/"${PN}"
+	doins -r "${S}"/opt/kingsoft/"${PN}"/{office6,templates}
 
-	fperms 0755 /opt/kingsoft/${PN}/office6/{et,ksolaunch,parsecloudfiletool,promecefpluginhost,transerr,wpp,wps,wpscloudsvr,wpsd,wpsoffice,wpspdf}
+	fperms 0755 /opt/kingsoft/"${PN}"/office6/{et,ksolaunch,promecefpluginhost,transerr,wpp,wps,wpscloudsvr,wpsd,wpsoffice,wpspdf}
 }
