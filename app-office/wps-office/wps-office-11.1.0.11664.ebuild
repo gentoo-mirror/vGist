@@ -19,7 +19,7 @@ SRC_URI="
 	mips?	( https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${MY_PV}/${PN}_${PV}_mips64el.deb )
 "
 
-SLOT="0/${MY_PV}"
+SLOT="0"
 RESTRICT="bindist mirror strip"
 LICENSE="WPS-EULA"
 IUSE="big-endian"
