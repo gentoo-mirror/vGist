@@ -16,6 +16,7 @@ SRC_URI="
 	arm64? ( https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.qq.weixin/com.tencent.weixin_${PV}_arm64.deb )"
 
 SLOT="0"
+IUSE="scrot"
 RESTRICT="bindist strip mirror"
 LICENSE="ISC"
 
@@ -25,6 +26,7 @@ LICENSE="ISC"
 
 RDEPEND="
 	dev-libs/nss
+	scrot? ( media-gfx/scrot )
 	media-libs/alsa-lib
 	media-libs/mesa
 	net-print/cups
@@ -52,10 +54,17 @@ src_prepare() {
 
 	sed -i 's,Name=微信,Name=Wexin uos,' \
 		"${S}/usr/share/applications/weixin.desktop" || die
+	sed -i 's,Categories=Utility,Categories=Network,' \
+		"${S}/usr/share/applications/weixin.desktop" || die
 	sed -i 's,/opt/apps/com.tencent.weixin/files/weixin/weixin.sh,/usr/bin/weixin-uos,' \
 		"${S}/usr/share/applications/weixin.desktop" || die
 	sed -i 's,/opt/apps/com.tencent.weixin/files/weixin/weixin,/opt/weixin-uos/weixin,g' \
 		"${S}/opt/apps/com.tencent.weixin/files/weixin/weixin.sh" || die
+
+	if use scrot; then
+		sed -i 's|__dirname,"bin","scrot"|"/usr/bin/"|g' "${S}/opt/apps/com.tencent.weixin/files/weixin/resources/app/packages/main/dist/index.js" || die
+		rm -rf "${S}/opt/apps/com.tencent.weixin/files/weixin/resources/app/packages/main/dist/bin" || die
+	fi
 }
 
 src_install() {
@@ -82,4 +91,12 @@ src_install() {
 
 	insinto /opt/weixin-uos/crap/var/lib/uos-license
 	newins "${FILESDIR}/license.json" .license.json
+}
+
+pkg_postinst(){
+	einfo
+	einfo "In order to make screen snapshot work correct"
+	einfo "please emerge media-gfx/scrot"
+	einfo "要使用屏幕截图功能，请安装 media-gfx/scrot"
+	einfo
 }
