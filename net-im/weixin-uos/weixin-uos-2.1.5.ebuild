@@ -42,6 +42,7 @@ RDEPEND="
 	sys-apps/lsb-release
 	sys-apps/bubblewrap
 "
+BDEPEND="dev-util/patchelf"
 
 S="${WORKDIR}"
 
@@ -52,10 +53,15 @@ src_prepare() {
 
 	sed -i 's,Name=微信,Name=Wexin uos,' \
 		"${S}/usr/share/applications/weixin.desktop" || die
+	sed -i 's,Categories=Utility,Categories=Network,' \
+		"${S}/usr/share/applications/weixin.desktop" || die
 	sed -i 's,/opt/apps/com.tencent.weixin/files/weixin/weixin.sh,/usr/bin/weixin-uos,' \
 		"${S}/usr/share/applications/weixin.desktop" || die
 	sed -i 's,/opt/apps/com.tencent.weixin/files/weixin/weixin,/opt/weixin-uos/weixin,g' \
 		"${S}/opt/apps/com.tencent.weixin/files/weixin/weixin.sh" || die
+
+	# fix rpath
+	patchelf --set-rpath /opt/weixin-uos/resources/app/packages/main/dist/bin/scrot "${S}/opt/apps/com.tencent.weixin/files/weixin/resources/app/packages/main/dist/bin/scrot/scrot" || die
 }
 
 src_install() {
@@ -69,6 +75,7 @@ src_install() {
 	insinto /opt/weixin-uos
 	doins -r "${S}"/opt/apps/com.tencent.weixin/files/weixin/*
 	fperms +x /opt/weixin-uos/weixin{,.sh}
+	fperms +x /opt/weixin-uos/resources/app/packages/main/dist/bin/scrot/scrot
 
 	insinto /opt/weixin-uos/crap
 	doins "${FILESDIR}"/uos-{lsb,release}
