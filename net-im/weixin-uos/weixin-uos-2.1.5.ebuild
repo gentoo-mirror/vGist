@@ -16,7 +16,6 @@ SRC_URI="
 	arm64? ( https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.qq.weixin/com.tencent.weixin_${PV}_arm64.deb )"
 
 SLOT="0"
-IUSE="scrot"
 RESTRICT="bindist strip mirror"
 LICENSE="ISC"
 
@@ -26,7 +25,6 @@ LICENSE="ISC"
 
 RDEPEND="
 	dev-libs/nss
-	scrot? ( media-gfx/scrot )
 	media-libs/alsa-lib
 	media-libs/mesa
 	net-print/cups
@@ -91,12 +89,4 @@ src_install() {
 
 	insinto /opt/weixin-uos/crap/var/lib/uos-license
 	newins "${FILESDIR}/license.json" .license.json
-}
-
-pkg_postinst(){
-	einfo
-	einfo "In order to make screen snapshot work correct"
-	einfo "please emerge media-gfx/scrot"
-	einfo "要使用屏幕截图功能，请安装 media-gfx/scrot"
-	einfo
 }
