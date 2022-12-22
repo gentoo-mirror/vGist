@@ -30,8 +30,9 @@ RDEPEND="
 	dev-libs/glib:2
 	media-libs/fontconfig:1.0
 	|| ( media-libs/flac media-libs/flac-compat:8.3.0 )
+	media-libs/libpulse
+	|| ( media-libs/tiff:0/0 media-libs/tiff-compat:4 )
 	media-libs/libvorbis
-	media-sound/pulseaudio
 	net-libs/libasyncns
 	net-print/cups
 	sys-apps/tcp-wrappers
