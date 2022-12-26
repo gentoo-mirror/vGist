@@ -14,7 +14,7 @@ CRATES="
 	arc-swap-1.5.1
 	arrayref-0.3.6
 	arrayvec-0.7.2
-	async-trait-0.1.59
+	async-trait-0.1.60
 	autocfg-1.1.0
 	base16ct-0.1.1
 	base64-0.13.1
@@ -217,7 +217,7 @@ CRATES="
 	serde-1.0.151
 	serde-value-0.7.0
 	serde_derive-1.0.151
-	serde_json-1.0.89
+	serde_json-1.0.91
 	serde_urlencoded-0.7.1
 	serde_yaml-0.8.26
 	sha1-0.10.5
@@ -244,8 +244,8 @@ CRATES="
 	tempfile-3.3.0
 	termcolor-1.1.3
 	terminal_size-0.2.3
-	thiserror-1.0.37
-	thiserror-impl-1.0.37
+	thiserror-1.0.38
+	thiserror-impl-1.0.38
 	thread-id-4.0.0
 	time-0.1.45
 	tinyvec-1.6.0
@@ -345,7 +345,6 @@ QA_FLAGS_IGNORED="
 "
 
 src_configure() {
-	# Should we provide stream cipher protocol option?
 	local myfeatures=(
 		$(usex redir local-redir "")
 		$(usex tun local-tun "")
