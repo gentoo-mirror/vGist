@@ -17,17 +17,9 @@ IUSE=""
 
 RESRICT="bindist mirror"
 
-# Dependencies, require sys-apps/ripgrep
+# Dependencies
 #
-# readelf -a Enpass | rg '\(NEEDED\)' | rg -o '\[.*\]' | sed 's/^\[//; s/\]$//;' >> /tmp/enpass-result
-#
-# ldd Enpass | \
-# 	rg "$(cat /tmp/enpass-result | tr '\n' '|' | sed 's/^/(?:/; s/|$/)/; s/\./\\./g;')" | \
-# 	rg -o '=> (.*) \(' | \
-# 	sed 's/^=> //; s/($//;' | \
-# 	xargs equery b | \
-# 	sort | \
-# 	uniq
+# objdump -p ./Enpass | grep NEEDED | awk '{print $2}' | xargs equery b | sort | uniq
 
 RDEPEND="
 	app-arch/xz-utils
@@ -39,7 +31,6 @@ RDEPEND="
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
-	sys-libs/glibc
 	sys-libs/zlib
 	x11-libs/gtk+:3
 	x11-libs/libICE
@@ -52,17 +43,15 @@ RDEPEND="
 	x11-libs/pango"
 
 QA_PREBUILT="
-	opt/enpass/wifisyncserver_bin
 	opt/enpass/Enpass
 	opt/enpass/importer_enpass
+	opt/enpass/wifisyncserver_bin
 "
 
 S="${WORKDIR}"
 
 src_prepare() {
 	default
-	sed -i 's,Exec=/opt/enpass/Enpass,Exec=/usr/bin/enpass,' \
-		usr/share/applications/enpass.desktop || die
 	gzip -d usr/share/doc/enpass/changelog.gz || die
 }
 
