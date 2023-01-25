@@ -56,7 +56,6 @@ src_prepare() {
 }
 
 src_install() {
-	dobin "${FILESDIR}/enpass"
 	domenu usr/share/applications/enpass.desktop
 	dodoc usr/share/doc/enpass/changelog
 
