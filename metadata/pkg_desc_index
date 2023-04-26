@@ -3,5 +3,4 @@ app-i18n/librime 1.7.3-r1: RIME (Rime Input Method Engine) core library
 app-misc/ccal 2.5.3: A simple command line calendar for Chinese lunar
 app-office/wps-office 11.1.0.11664-r3: WPS Office is an office productivity suite, Here is the Chinese version
 dev-util/google-perftools 2.9.1-r2: Fast, multi-threaded malloc() and nifty performance analysis tools
-net-im/weixin-uos 2.1.5: UOS weixin
 net-proxy/shadowsocks-rust 1.15.2 1.15.3: A Rust port of shadowsocks.
