@@ -10,7 +10,7 @@ MY_PV="$(ver_cut 4)"
 DESCRIPTION="WPS Office is an office productivity suite, Here is the Chinese version"
 HOMEPAGE="http://www.wps.cn/product/wpslinux/ http://wps-community.org/"
 
-KEYWORDS="~amd64 ~arm64 ~loong ~mips"
+KEYWORDS="~amd64 ~arm64 ~mips"
 
 SRC_URI="
 	amd64?	( https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${MY_PV}/${PN}_${PV}_amd64.deb )
@@ -31,8 +31,8 @@ RDEPEND="
 	media-libs/fontconfig:1.0
 	|| ( media-libs/flac media-libs/flac-compat:8.3.0 )
 	media-libs/libpulse
-	|| ( media-libs/tiff:0/0 media-libs/tiff-compat:4 )
 	media-libs/libvorbis
+	media-libs/tiff-compat:4
 	net-libs/libasyncns
 	net-print/cups
 	sys-apps/tcp-wrappers
