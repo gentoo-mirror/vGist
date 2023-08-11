@@ -27,7 +27,6 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/libglvnd
-	media-sound/pulseaudio
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
@@ -67,7 +66,7 @@ src_install() {
 	doins usr/share/mime/packages/application-enpass.xml
 
 	local size
-	for size in 16 22 24 32 48 ; do
+	for size in 16 22 24 32 48; do
 		doicon -c status -s ${size} usr/share/icons/hicolor/${size}x${size}/status/enpass-status.png
 		doicon -c status -s ${size} usr/share/icons/hicolor/${size}x${size}/status/enpass-status-dark.png
 	done
