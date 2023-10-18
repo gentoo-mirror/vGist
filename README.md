@@ -1,7 +1,6 @@
 personal overlay
 
+    # emerge app-eselect/eselect-repository
     # eselect repository enable vGist
-    or
-    # layman -f -a vGist
 
 enjoy
