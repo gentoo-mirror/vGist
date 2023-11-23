@@ -36,13 +36,13 @@ RDEPEND="
 	x11-libs/libSM
 	x11-libs/libX11
 	x11-libs/libXScrnSaver
-	x11-libs/libXrender
 	x11-libs/libxcb
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
-	x11-libs/xcb-util-renderutil"
+	x11-libs/xcb-util-renderutil
+	x11-libs/xcb-util-wm"
 
 QA_PREBUILT="opt/enpass/*"
 
