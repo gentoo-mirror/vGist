@@ -41,6 +41,7 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/xcb-util-image
+	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-renderutil"
 
 QA_PREBUILT="opt/enpass/*"
