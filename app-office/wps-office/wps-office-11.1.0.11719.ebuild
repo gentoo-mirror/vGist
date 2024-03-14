@@ -58,6 +58,7 @@ src_install() {
 	doins -r "${S}"/usr/share/{applications,desktop-directories,icons,mime,templates}
 
 	insinto /opt/kingsoft/"${PN}"
+	rm "${S}"/opt/kingsoft/wps-office/office6/libstdc++.so* || die
 	doins -r "${S}"/opt/kingsoft/"${PN}"/{office6,templates}
 
 	fperms 0755 /opt/kingsoft/"${PN}"/office6/{et,ksolaunch,promecefpluginhost,transerr,wpp,wps,wpscloudsvr,wpsd,wpsoffice,wpspdf}
