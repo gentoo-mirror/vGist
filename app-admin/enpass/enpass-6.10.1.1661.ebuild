@@ -9,11 +9,11 @@ DESCRIPTION="A cross-platform, complete password management solution."
 HOMEPAGE="https://www.enpass.io"
 SRC_URI="https://apt.enpass.io/pool/main/e/${PN}/${PN}_${PV}_amd64.deb"
 
+S="${WORKDIR}"
+
 LICENSE="SINEW-EULA"
 SLOT="0"
 KEYWORDS="~amd64"
-
-IUSE=""
 
 RESRICT="bindist mirror strip"
 
@@ -45,8 +45,6 @@ RDEPEND="
 	x11-libs/xcb-util-wm"
 
 QA_PREBUILT="opt/enpass/*"
-
-S="${WORKDIR}"
 
 src_prepare() {
 	default
