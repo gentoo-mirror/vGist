@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -48,27 +48,27 @@ QA_PREBUILT="opt/enpass/*"
 
 src_prepare() {
 	default
-	gzip -d usr/share/doc/enpass/changelog.gz || die
+	gzip -d "${S}"/usr/share/doc/enpass/changelog.gz || die
 }
 
 src_install() {
-	domenu usr/share/applications/enpass.desktop
-	dodoc usr/share/doc/enpass/changelog
+	domenu "${S}"/usr/share/applications/enpass.desktop
+	dodoc "${S}"/usr/share/doc/enpass/changelog
 
 	insinto /opt/enpass
-	doins -r opt/enpass/.
+	doins -r "${S}"/opt/enpass/.
 	fperms +x /opt/enpass/{Enpass,importer_enpass,wifisyncserver_bin}
 
 	insinto /usr/share/mime/packages
-	doins usr/share/mime/packages/application-enpass.xml
+	doins "${S}"/usr/share/mime/packages/application-enpass.xml
 
 	local size
 	for size in 16 22 24 32 48; do
-		doicon -c status -s ${size} usr/share/icons/hicolor/${size}x${size}/status/enpass-status.png
-		doicon -c status -s ${size} usr/share/icons/hicolor/${size}x${size}/status/enpass-status-dark.png
+		doicon -c status -s ${size} "${S}"/usr/share/icons/hicolor/${size}x${size}/status/enpass-status.png
+		doicon -c status -s ${size} "${S}"/usr/share/icons/hicolor/${size}x${size}/status/enpass-status-dark.png
 	done
 
 	for size in 16 24 32 48 64 96 128 256; do
-		doicon -s ${size} usr/share/icons/hicolor/${size}x${size}/apps/enpass.png
+		doicon -s ${size} "${S}"/usr/share/icons/hicolor/${size}x${size}/apps/enpass.png
 	done
 }
